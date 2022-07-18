@@ -29,7 +29,7 @@ echo "Server started, launching Minecraft"
 fi
 cd ~/Desktop
 ~/Desktop/java/jdk-18.0.1.1.jdk/Contents/Home/bin/java -jar TLauncher*.jar
-if [[ $apmt= "h" ]] then
+if [[ $apmt = "h" ]] then
 clear
 echo "Connect to $ampi"
 fi

@@ -21,4 +21,5 @@ sed -i 's/motd=A Minecraft Server/motd=Impostor Server/' server.properties
 screen -dmS mcs ~/Desktop/java/jdk-18.0.1.1.jdk/Contents/Home/bin/java -jar server.jar
 echo "server started, launching minecraft"
 fi
+cd ~/Desktop
 ~/Desktop/java/jdk-18.0.1.1.jdk/Contents/Home/bin/java -jar mc/*.jar

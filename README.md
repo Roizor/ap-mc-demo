@@ -1,4 +1,3 @@
-# ap-mc-demo
-run the script for tlauncher.<br>
-only tested on macos<br>
-i made this specifically for the best buy demo macs. lol<br>
+# Testing
+script.sh is AArch64 (apple M architecture (M1,M2)
+x64.sh is X64 (standard 64bit architecture)

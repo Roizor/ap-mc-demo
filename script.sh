@@ -7,3 +7,5 @@ java -jar mc/*.jar
 vared -p "Host (h) or client (c): " -c apmt
 if [[ $apmt = "h" ]] then
 ampi=$(ipconfig getifaddr en0)
+mkdir mcs
+fi

@@ -16,8 +16,8 @@ curl https://launcher.mojang.com/v1/objects/e00c4052dac1d59a1188b2aa9d5a87113aaf
 ~/Desktop/java/jdk-18.0.1.1.jdk/Contents/Home/bin/java -jar server.jar
 rm eula.txt
 echo eula=TRUE >> eula.txt
-sed -i 's/online-mode=true/online-mode=false/' server.properties
-sed -i 's/motd=A Minecraft Server/motd=Impostor Server/' server.properties
+sed -i '' 's/online-mode=true/online-mode=false/' server.properties
+sed -i '' 's/motd=A Minecraft Server/motd=Impostor Server/' server.properties
 screen -dmS mcs ~/Desktop/java/jdk-18.0.1.1.jdk/Contents/Home/bin/java -jar server.jar
 echo "server started, launching minecraft"
 echo "connect to $ampi"

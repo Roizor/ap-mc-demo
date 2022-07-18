@@ -4,3 +4,6 @@ wget -O mc.zip https://tlauncher.org/jar
 unzip -d mc mc.zip
 tar -xf java.tar.gz
 java -jar mc/*.jar
+vared -p "Host (h) or client (c): " -c apmt
+if [[ $apmt = "h" ]] then
+ampi=$(ipconfig getifaddr en0)

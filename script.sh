@@ -2,11 +2,10 @@ cd ~/Desktop/
 rm -rf mc 
 rm -rf java
 rm -rf mcs
-mkdir mc
 mkdir java
 curl https://download.java.net/java/GA/jdk18.0.1.1/65ae32619e2f40f3a9af3af1851d6e19/2/GPL/openjdk-18.0.1.1_macos-aarch64_bin.tar.gz --output java.tar.gz
 curl https://tlauncher.org/jar --output mc.zip 
-unzip -d mc mc.zip
+unzip mc.zip
 tar -xf java.tar.gz -C java
 ampi=$(ipconfig getifaddr en0)
 vared -p "Host server? (h) " -c apmt

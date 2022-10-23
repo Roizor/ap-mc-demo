@@ -19,3 +19,7 @@ jobs:
         with:
           name: upload-zip
           path: ${{ github.workspace }}/pkg.zip
+      - name: release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: pkg.zip

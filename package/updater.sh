@@ -5,4 +5,4 @@ if [[ $Version =~ $Online ]]; then
     echo "You are running an outdated version of APMC!"
 fi
 wait 1
-sh scripts/main.sh
+zsh scripts/main.sh

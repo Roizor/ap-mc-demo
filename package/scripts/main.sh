@@ -1,11 +1,11 @@
-$CpuType=$( sysctl -a | grep brand )
+$CpuType="$( sysctl -a | grep brand )"
 $ScriptRunner = "intel.sh"
 
 if [[ $CpuType =~ "Apple" ]]; then
     $ScriptRunner = "arm.sh"
 fi
 clear
-sh $ScriptRunner
+zsh $ScriptRunner
 
 ampi=$(ipconfig getifaddr en0)
 

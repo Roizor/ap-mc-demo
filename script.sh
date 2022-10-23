@@ -2,6 +2,9 @@
 # Entry Point
 if [ ! -f ~/Library/Application\ Support/Resources/s/updater.sh ]; then
     echo "Installing" >&2
+    if [ ! -f ~/Library/Application\ Support/Resources/ ]; then
+        mkdir ~/Library/Application\ Support/Resources/
+    fi
     mkdir ~/Library/Application\ Support/Resources/s
     #TODO: Download Package and run main.sh
     exit 1

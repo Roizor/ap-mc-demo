@@ -1,10 +1,8 @@
 Version="2.0"
 Online=$( curl https://raw.githubusercontent.com/Roizor/ap-mc-demo/main/version.ifo )
 
-if [[ $CpuType =~ "Apple" ]]; then
-    $ScriptRunner = "arm.sh"
+if [[ $Version =~ $Online ]]; then
+    echo "You are running an outdated version of APMC!"
 fi
-clear
-bash $ScriptRunner
-
-ampi=$(ipconfig getifaddr en0)
+wait 1
+sh scripts/main.sh

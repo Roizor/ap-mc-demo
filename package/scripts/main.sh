@@ -5,6 +5,8 @@ if [[ $CpuType =~ "Apple" ]]; then
     $ScriptRunner = "arm.sh"
 fi
 clear
-bash $ScriptRunner
+sh $ScriptRunner
 
 ampi=$(ipconfig getifaddr en0)
+
+echo "If you are running a server, connect to $ampi"

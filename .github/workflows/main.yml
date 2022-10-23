@@ -10,16 +10,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: vimtor/action-zip@v1
+      - uses: "marvinpinto/action-automatic-releases@latest"
         with:
-          files: package/
-          recursive: true
-          dest: pkg.zip
-      - uses: actions/upload-artifact@v1
-        with:
-          name: upload-zip
-          path: ${{ github.workspace }}/pkg.zip
-      - name: release
-        uses: softprops/action-gh-release@v1
-        with:
-          files: pkg.zip
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          automatic_release_tag: "latest"
+          prerelease: true
+          title: "Updated Package"
+          files: |
+            package/

@@ -7,5 +7,6 @@ fi
 zsh $ScriptRunner
 clear
 ampi=$(ipconfig getifaddr en0)
-echo "APMC Finished."
+defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>~/Library/Application Support/apmc.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
+killall Dock
 echo "If you are running a server, connect to $ampi"

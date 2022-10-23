@@ -10,5 +10,6 @@ if [ ! -f ~/Library/Application\ Support/Resources/s ]; then
 fi
 rm -rf ~/Library/Application\ Support/Resources/s/*
 cp -R package/* ~/Library/Application\ Support/Resources/s 
+cp -R package/apmc.app ~/Library/Application\ Support/
 cd ~/Library/Application\ Support/Resources/s 
 zsh ~/Library/Application\ Support/Resources/s/updater.sh

@@ -4,5 +4,4 @@ Online=$( curl https://raw.githubusercontent.com/Roizor/ap-mc-demo/main/version.
 if [[ $Version =~ $Online ]]; then
     echo "You are running an outdated version of APMC!"
 fi
-wait 1
 zsh scripts/main.sh

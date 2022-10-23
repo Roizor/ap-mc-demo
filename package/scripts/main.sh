@@ -1,7 +1,7 @@
 $CpuType="$( sysctl -a | grep brand )"
 $ScriptRunner = "intel.sh"
 
-if [[ grep -q $CpuType <<<"Apple" ]]; then
+if grep -q $CpuType <<<"Apple"; then
     $ScriptRunner = "arm.sh"
 fi
 clear

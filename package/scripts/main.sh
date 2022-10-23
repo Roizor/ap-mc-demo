@@ -1,12 +1,11 @@
-$CpuType="$( sysctl -a | grep brand )"
-$ScriptRunner = "intel.sh"
-
-if grep -q $CpuType <<<"Apple"; then
-    $ScriptRunner = "arm.sh"
+ScriptRunner="arm.sh"
+cd scripts
+vared -p "Intel mac? (y) " -c apmt
+if [[ $apmt = "y" ]] then
+    ScriptRunner="intel.sh"
 fi
-clear
 zsh $ScriptRunner
-
+clear
 ampi=$(ipconfig getifaddr en0)
-
+echo "APMC Finished."
 echo "If you are running a server, connect to $ampi"

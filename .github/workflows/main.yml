@@ -15,3 +15,7 @@ jobs:
           files: package/
           recursive: true
           dest: pkg.zip
+      - uses: actions/upload-artifact@v1
+        with:
+          name: upload-zip
+          path: ${{ github.workspace }}/pkg.zip

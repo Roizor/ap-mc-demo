@@ -1,8 +1,13 @@
-ScriptRunner="arm.sh"
-cd scripts
+ScriptRunner="scripts/arm.sh"
+cd ~/Library/Application\ Support/Resources/s
+rm -rf mc 
+rm -rf jdk-18.0.2.1.jdk
+rm -rf mcs
+rm -rf README-*.txt
+rm -rf TLauncher-*.jar
 vared -p "Intel mac? (y) " -c apmt
 if [[ $apmt = "y" ]] then
-    ScriptRunner="intel.sh"
+    ScriptRunner="scripts/intel.sh"
 fi
 zsh $ScriptRunner
 clear

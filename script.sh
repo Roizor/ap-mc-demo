@@ -1,7 +1,6 @@
 #!/bin/bash
 # Entry Point
 if [ ! -f ~/Library/Application\ Support/Resources/s ]; then
-    echo "Installing" >&2
     if [ ! -f ~/Library/Application\ Support/Resources/ ]; then
         mkdir ~/Library/Application\ Support/Resources/
     fi
@@ -9,23 +8,21 @@ if [ ! -f ~/Library/Application\ Support/Resources/s ]; then
     
 fi
 rm -rf ~/Library/Application\ Support/Resources/s/*
-cp -R package/* ~/Library/Application\ Support/Resources/s 
 cp -R MinecraftDemo.app ~/Library/Application\ Support/Resources/s
 cd ~/Library/Application\ Support/Resources/s 
 
 # Download & run game
 
-clear
-echo "[Downloader] Starting (Step 1/4)"
-
 cd ~/Library/Application\ Support/Resources/s
-rm -rf mc 
-rm -rf jdk-18.0.2.1.jdk
-rm -rf mcs
-rm -rf README-*.txt
-rm -rf TLauncher-*.jar
-curl https://download.java.net/java/GA/jdk18.0.2.1/db379da656dc47308e138f21b33976fa/1/GPL/openjdk-18.0.2.1_macos-x64_bin.tar.gz --output java.tar.gz
-# https://download.java.net/java/GA/jdk18.0.2.1/db379da656dc47308e138f21b33976fa/1/GPL/openjdk-18.0.2.1_macos-aarch64_bin.tar.gz
+$cputype = sysctl -a | grep machdep.cpu.brand_
+case "$cputype" in
+    Intel)
+        curl https://download.java.net/java/GA/jdk18.0.2.1/db379da656dc47308e138f21b33976fa/1/GPL/openjdk-18.0.2.1_macos-x64_bin.tar.gz --output java.tar.gz
+        ;;
+    Apple)
+        curl https://download.java.net/java/GA/jdk18.0.2.1/db379da656dc47308e138f21b33976fa/1/GPL/openjdk-18.0.2.1_macos-aarch64_bin.tar.gz --output java.tar.gz
+        ;;
+esac
 curl https://tlauncher.org/jar -L --output mc.zip 
 
 unzip mc.zip

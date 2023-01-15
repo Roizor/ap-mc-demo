@@ -14,7 +14,7 @@ cd ~/Library/Application\ Support/Resources/s
 # Download & run game
 
 cd ~/Library/Application\ Support/Resources/s
-$cputype = sysctl -a | grep machdep.cpu.brand_
+$cputype=sysctl -a | grep machdep.cpu.brand_
 case "$cputype" in
     Intel)
         curl https://download.java.net/java/GA/jdk18.0.2.1/db379da656dc47308e138f21b33976fa/1/GPL/openjdk-18.0.2.1_macos-x64_bin.tar.gz --output java.tar.gz

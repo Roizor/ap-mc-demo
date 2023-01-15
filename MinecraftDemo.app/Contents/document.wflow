@@ -59,7 +59,7 @@
 				<key>ActionParameters</key>
 				<dict>
 					<key>COMMAND_STRING</key>
-					<string>~/Library/Application\ Support/Resources/s/jdk-18.0.1.1.jdk/Contents/Home/bin/java -jar ~/Library/Application\ Support/Resources/s/TLauncher-2.86.jar</string>
+					<string>~/Library/Application\ Support/Resources/s/jdk-18.0.2.1.jdk/Contents/Home/bin/java -jar ~/Library/Application\ Support/Resources/s/TLauncher-2.86.jar</string>
 					<key>CheckedForUserDefaultShell</key>
 					<true/>
 					<key>inputMethod</key>

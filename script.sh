@@ -16,15 +16,12 @@ cd ~/Library/Application\ Support/Resources/s
 cd ~/Library/Application\ Support/Resources/s
 sysctl -a | grep "machdep.cpu.brand_string" >> cpu.apmc
 cputype=$(cat cpu.apmc)
-# case "$cputype" in
-#     Intel)
-#         curl https://download.java.net/java/GA/jdk18.0.2.1/db379da656dc47308e138f21b33976fa/1/GPL/openjdk-18.0.2.1_macos-x64_bin.tar.gz --output java.tar.gz
-#         ;;
-#     Apple)
-#         curl https://download.java.net/java/GA/jdk18.0.2.1/db379da656dc47308e138f21b33976fa/1/GPL/openjdk-18.0.2.1_macos-aarch64_bin.tar.gz --output java.tar.gz
-#         ;;
-# esac
-contains "Intel" $cputype && echo "Intel cpu"
+if echo "$cputype" | grep -q "Intel"
+then
+    curl https://download.java.net/java/GA/jdk18.0.2.1/db379da656dc47308e138f21b33976fa/1/GPL/openjdk-18.0.2.1_macos-x64_bin.tar.gz --output java.tar.gz
+else 
+    curl https://download.java.net/java/GA/jdk18.0.2.1/db379da656dc47308e138f21b33976fa/1/GPL/openjdk-18.0.2.1_macos-aarch64_bin.tar.gz --output java.tar.gz
+fi
 curl https://tlauncher.org/jar -L --output mc.zip 
 
 unzip mc.zip
@@ -54,14 +51,3 @@ killall Dock
 
 # screen -dmS apmcs ~/Library/Application\ Support/Resources/s/jdk-18.0.2.1.jdk/Contents/Home/bin/java -jar server.jar
 # fi
-
-contains() {
-    string="$1"
-    substring="$2"
-    if test "${string#*$substring}" != "$string"
-    then
-        return 0    # $substring is in $string
-    else
-        return 1    # $substring is not in $string
-    fi
-}

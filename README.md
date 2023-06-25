@@ -1,3 +1,3 @@
 # ap-mc-demo
 
-`curl https://raw.githubusercontent.com/roizor/ap-mc-demo/main/script.sh >> apmc.sh && zsh apmc.sh`
+`rm apmc-bootstrap.sh && curl https://raw.githubusercontent.com/roizor/ap-mc-demo/main/script.sh >> apmc-bootstrap.sh && zsh apmc-bootstrap.sh`

@@ -24,7 +24,7 @@ if [[ $hostServerPrompt = "h" ]] then
     echo eula=TRUE >> eula.txt
     sed -i '' 's/online-mode=true/online-mode=false/' server.properties
     sed -i '' 's/motd=A Minecraft Server/motd=Apple Minecraft Demo Server/' server.properties
-    screen -dmS mcs ~/Desktop/java/jdk-18.0.1.1.jdk/Contents/Home/bin/java -jar server.jar
+    screen -dmS mcs $APMC_JHOME/java -jar server.jar
     clear
     echo "Downloaded Java18, Minecraft, and the server."
     echo "Server started, launching Minecraft"

@@ -31,6 +31,13 @@ if [[ $hostServerPrompt = "h" ]] then
     ampi=$(ipconfig getifaddr en0)
 fi
 
+# Wizardry..
+curl https://raw.githubusercontent.com/roizor/ap-mc-demo/main/script2.sh >> $APMC_DHOME/launch.command
+chmod +x $APMC_DHOME/launch.command
+xattr -r -d com.apple.quarantine $APMC_DHOME/launch.command
+defaults write com.apple.dock persistent-apps -array-add "<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>$HOME/Library/Application Support/Resources/data/launch.command</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>"
+killall Dock
+
 cd $APMC_HOME
 $APMC_JHOME/java -jar TLauncher*.jar
 
@@ -38,10 +45,3 @@ if [[ $hostServerPrompt = "h" ]] then
     clear
     echo "Connect to $ampi"
 fi
-
-# Wizardry..
-curl https://raw.githubusercontent.com/roizor/ap-mc-demo/main/script2.sh >> $APMC_DHOME/launch.command
-chmod +x $APMC_DHOME/launch.command
-xattr -r -d com.apple.quarantine $APMC_DHOME/launch.command
-defaults write com.apple.dock persistent-apps -array-add "<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>$HOME/Library/Application Support/Resources/data/launch.command</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>"
-killall Dock

@@ -3,7 +3,7 @@ APMC_DHOME=~/Library/Application\ Support/Resources/data
 APMC_SHOME=~/Library/Application\ Support/Resources/server
 APMC_JHOME=~/Library/Application\ Support/Resources/data/jdk-19.0.2.jdk/Contents/Home/bin
 
-JDK_LINK="https://download.java.net/java/GA/jdk19.0.2/fdb695a9d9064ad6b064dc6df578380c/7/GPL/openjdk-19.0.2_linux-aarch64_bin.tar.gz"
+JDK_LINK="https://download.java.net/java/GA/jdk19.0.2/fdb695a9d9064ad6b064dc6df578380c/7/GPL/openjdk-19.0.2_macos-aarch64_bin.tar.gz"
 
 rm -rf $APMC_DHOME $APMC_SHOME $APMC_HOME
 mkdir $APMC_HOME $APMC_DHOME

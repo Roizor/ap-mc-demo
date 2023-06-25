@@ -1,17 +1,19 @@
 APMC_HOME=~/Library/Application\ Support/Resources
 APMC_DHOME=~/Library/Application\ Support/Resources/data
 APMC_SHOME=~/Library/Application\ Support/Resources/server
-APMC_JHOME=~/Library/Application\ Support/Resources/data/jdk-18.0.1.1.jdk/Contents/home/bin
+APMC_JHOME=~/Library/Application\ Support/Resources/data/jdk-19.0.2.jdk/Contents/home/bin
+
+JDK_LINK="https://download.java.net/java/GA/jdk19.0.2/fdb695a9d9064ad6b064dc6df578380c/7/GPL/openjdk-19.0.2_linux-aarch64_bin.tar.gz"
 
 rm -rf $APMC_DHOME $APMC_SHOME $APMC_HOME
 mkdir $APMC_HOME $APMC_DHOME
 
 cd $APMC_DHOME
 
-curl https://download.java.net/java/GA/jdk18.0.1.1/65ae32619e2f40f3a9af3af1851d6e19/2/GPL/openjdk-18.0.1.1_macos-aarch64_bin.tar.gz --output java.tar.gz
-curl https://tlauncher.org/jar -L --output mc.zip
+curl -s $JDK_LINK --output java.tar.gz
+curl -Ls https://tlauncher.org/jar --output mc.zip
 unzip mc.zip
-tar -xf java.tar.gz -C java
+tar -xf java.tar.gz
 
 vared -p "Host server? (h) " -c hostServerPrompt
 if [[ $hostServerPrompt = "h" ]] then
@@ -26,7 +28,6 @@ if [[ $hostServerPrompt = "h" ]] then
     sed -i '' 's/motd=A Minecraft Server/motd=Apple Minecraft Demo Server/' server.properties
     screen -dmS mcs $APMC_JHOME/java -jar server.jar
     clear
-    echo "Downloaded Java18, Minecraft, and the server."
     echo "Server started, launching Minecraft"
     ampi=$(ipconfig getifaddr en0)
 fi

@@ -10,5 +10,5 @@ if [[ -f "$APMC_SHOME" ]]; then # A server exists!
 	screen -dmS mcs $APMC_JHOME/java -jar server.jar
 fi
 
-cd $APMC_HOME
+cd $APMC_DHOME
 $APMC_JHOME/java -jar TLauncher*.jar

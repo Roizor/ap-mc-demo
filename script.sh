@@ -31,8 +31,6 @@ if [[ $hostServerPrompt = "h" ]] then
     sed -i '' 's/online-mode=true/online-mode=false/' server.properties
     sed -i '' 's/motd=A Minecraft Server/motd=Apple Minecraft Demo Server/' server.properties
     screen -dmS mcs $APMC_JHOME/java -jar server.jar
-    clear
-    echo "Server started, launching Minecraft"
     ampi=$(ipconfig getifaddr en0)
 fi
 
@@ -45,13 +43,12 @@ echo "cd \"$HOME/Library/Application Support/Resources/data\" && zsh launch.zsh"
 chmod +x $APMC_DHOME/Launch\ Minecraft.command
 xattr -r -d com.apple.quarantine $APMC_DHOME/Launch\ Minecraft.command
 
-defaults write com.apple.dock persistent-apps -array-add "<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>$HOME/Library/Application Support/Resources/data/Launch\ Minecraft.command</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>"
+defaults write com.apple.dock persistent-apps -array-add "<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>$HOME/Library/Application Support/Resources/data/Launch Minecraft.command</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>"
 killall Dock
 
 cd $APMC_DHOME
 $APMC_JHOME/java -jar TLauncher*.jar
 
 if [[ $hostServerPrompt = "h" ]] then
-    clear
-    echo "Connect to $ampi"
+    osascript -e 'tell application (path to frontmost application as text) to display dialog "Hey! This computer hosts a Minecraft server! Connect to '$ampi' in Multiplayer. The version is 1.19!" buttons {"OK"} with icon stop'
 fi

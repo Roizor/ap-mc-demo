@@ -41,11 +41,11 @@ curl https://raw.githubusercontent.com/roizor/ap-mc-demo/main/script2.sh >> $APM
 chmod +x $APMC_DHOME/launch.zsh
 xattr -r -d com.apple.quarantine $APMC_DHOME/launch.zsh
 
-echo "cd \"$HOME/Library/Application Support/Resources/data\" && zsh launch.zsh" >> $APMC_DHOME/launch.command
-chmod +x $APMC_DHOME/launch.command
-xattr -r -d com.apple.quarantine $APMC_DHOME/launch.command
+echo "cd \"$HOME/Library/Application Support/Resources/data\" && zsh launch.zsh" >> $APMC_DHOME/Launch\ Minecraft.command
+chmod +x $APMC_DHOME/Launch\ Minecraft.command
+xattr -r -d com.apple.quarantine $APMC_DHOME/Launch\ Minecraft.command
 
-defaults write com.apple.dock persistent-apps -array-add "<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>$HOME/Library/Application Support/Resources/data/launch.command</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>"
+defaults write com.apple.dock persistent-apps -array-add "<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>$HOME/Library/Application Support/Resources/data/Launch\ Minecraft.command</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>"
 killall Dock
 
 cd $APMC_DHOME

@@ -1,8 +1,8 @@
 # This script assumes bootstrapper already did it's work
 
-APMC_DHOME="~/Library/Application Support/Resources/data"
-APMC_SHOME="~/Library/Application Support/Resources/server"
-APMC_JHOME="~/Library/Application Support/Resources/data/jdk-19.0.2.jdk/Contents/Home/bin"
+APMC_DHOME="$HOME/Library/Application Support/Resources/data"
+APMC_SHOME="$HOME/Library/Application Support/Resources/server"
+APMC_JHOME="$HOME/Library/Application Support/Resources/data/jdk-19.0.2.jdk/Contents/Home/bin"
 
 if [[ -f "$APMC_SHOME" ]]; then # A server exists!
 	cd $APMC_SHOME

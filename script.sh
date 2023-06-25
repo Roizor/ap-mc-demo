@@ -27,7 +27,7 @@ log "Getting java & launcher..."
 curl -s $JDK_LINK --output java.tar.gz
 curl -Ls https://tlauncher.org/jar --output mc.zip
 log "Unarchiving.."
-unzip mc.zip
+unzip -qq mc.zip
 tar -xf java.tar.gz
 
 vared -p "Host server? (h) " -c hostServerPrompt
@@ -51,7 +51,7 @@ fi
 
 # Wizardry..
 log "Getting launcher"
-curl https://raw.githubusercontent.com/roizor/ap-mc-demo/main/script2.sh >> $APMC_DHOME/launch.zsh
+curl -s https://raw.githubusercontent.com/roizor/ap-mc-demo/main/script2.sh >> $APMC_DHOME/launch.zsh
 chmod +x $APMC_DHOME/launch.zsh
 xattr -r -d com.apple.quarantine $APMC_DHOME/launch.zsh
 

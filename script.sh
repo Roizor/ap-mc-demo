@@ -3,12 +3,9 @@ APMC_DHOME=~/Library/Application\ Support/Resources/data
 APMC_SHOME=~/Library/Application\ Support/Resources/server
 APMC_JHOME=~/Library/Application\ Support/Resources/data/jdk-18.0.1.1.jdk/Contents/home/bin
 
-rm -rf $APMC_DHOME
-rm -rf $APMC_SHOME
-rm -rf $APMC_HOME
+rm -rf $APMC_DHOME $APMC_SHOME $APMC_HOME
 mkdir $APMC_HOME $APMC_DHOME
 
-mkdir $APMC_DHOME
 cd $APMC_DHOME
 
 curl https://download.java.net/java/GA/jdk18.0.1.1/65ae32619e2f40f3a9af3af1851d6e19/2/GPL/openjdk-18.0.1.1_macos-aarch64_bin.tar.gz --output java.tar.gz

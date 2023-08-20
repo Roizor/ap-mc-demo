@@ -24,8 +24,8 @@ mkdir $APMC_HOME $APMC_DHOME
 cd $APMC_DHOME
 
 log "Getting java & launcher..."
-curl -s $JDK_LINK --output java.tar.gz
-curl -Ls https://tlauncher.org/jar --output mc.zip
+curl -s $JDK_LINK --progress-bar --output java.tar.gz
+curl -Ls https://tlauncher.org/jar --progress-bar --output mc.zip
 log "Unarchiving.."
 unzip -qq mc.zip
 tar -xf java.tar.gz
@@ -37,7 +37,7 @@ if [[ $hostServerPrompt = "h" ]] then
     cd $APMC_SHOME
     
     log "Pulling 1.19 server"
-    curl -s https://launcher.mojang.com/v1/objects/e00c4052dac1d59a1188b2aa9d5a87113aaf1122/server.jar --output server.jar
+    curl -s https://launcher.mojang.com/v1/objects/e00c4052dac1d59a1188b2aa9d5a87113aaf1122/server.jar --progress-bar --output server.jar
     $APMC_JHOME/java -jar server.jar # start server once to make eula
     log "Fixing EULA & some settings"
     rm eula.txt
@@ -51,7 +51,7 @@ fi
 
 # Wizardry..
 log "Getting launcher"
-curl -s https://raw.githubusercontent.com/roizor/ap-mc-demo/main/script2.sh >> $APMC_DHOME/launch.zsh
+curl --progress-bar -s https://raw.githubusercontent.com/roizor/ap-mc-demo/main/script2.sh >> $APMC_DHOME/launch.zsh
 chmod +x $APMC_DHOME/launch.zsh
 xattr -r -d com.apple.quarantine $APMC_DHOME/launch.zsh
 

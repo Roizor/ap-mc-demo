@@ -79,3 +79,6 @@ if [[ $S = "1" ]] then
     log "Tell user a server is hosted here!"
     osascript -e 'tell application (path to frontmost application as text) to display dialog "Hey! This computer hosts a Minecraft server! Connect to '$ampi' in Multiplayer. The version is 1.20.1!" buttons {"OK"} with icon stop'
 fi
+
+clear
+echo "You may now close this window."

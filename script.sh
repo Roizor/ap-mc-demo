@@ -23,30 +23,34 @@ mkdir $APMC_HOME $APMC_DHOME
 
 cd $APMC_DHOME
 
-log "Getting java & launcher..."
+log "Getting java..."
 curl -s $JDK_LINK --progress-bar --output java.tar.gz
+log "Getting launcher..."
 curl -Ls https://tlauncher.org/jar --progress-bar --output mc.zip
 log "Unarchiving.."
 unzip -qq mc.zip
 tar -xf java.tar.gz
 
-vared -p "Host server? (h) " -c hostServerPrompt
-if [[ $hostServerPrompt = "h" ]] then
+
+if [[ $S = "1" ]] then
     log "Creating server directory"
     mkdir $APMC_SHOME
     cd $APMC_SHOME
     
-    log "Pulling 1.19 server"
-    curl -s https://launcher.mojang.com/v1/objects/e00c4052dac1d59a1188b2aa9d5a87113aaf1122/server.jar --progress-bar --output server.jar
+    log "Pulling 1.20.1 server"
+    curl -s https://api.papermc.io/v2/projects/paper/versions/1.20.1/builds/183/downloads/paper-1.20.1-183.jar --progress-bar --output server.jar
     $APMC_JHOME/java -jar server.jar # start server once to make eula
     log "Fixing EULA & some settings"
     rm eula.txt
     echo eula=TRUE >> eula.txt
     sed -i '' 's/online-mode=true/online-mode=false/' server.properties
-    sed -i '' 's/motd=A Minecraft Server/motd=Apple Minecraft Demo Server/' server.properties
+    sed -i '' 's/motd=A Minecraft Server/motd=Waiting on APMCUtil for MOTD../' server.properties
+    log "Pulling APMCUtils."
+    curl -s https://ifarded.lol/apmcu.jar --progress-bar --output plugins/apmcu.jar
     screen -dmS mcs $APMC_JHOME/java -jar server.jar
     log "Server is up!"
     ampi=$(ipconfig getifaddr en0)
+    echo "Started server on IP $ampi"
 fi
 
 # Wizardry..
@@ -67,7 +71,7 @@ log "Time for launch!"
 cd $APMC_DHOME
 $APMC_JHOME/java -jar TLauncher*.jar
 
-if [[ $hostServerPrompt = "h" ]] then
+if [[ $S = "1" ]] then
     log "Tell user a server is hosted here!"
-    osascript -e 'tell application (path to frontmost application as text) to display dialog "Hey! This computer hosts a Minecraft server! Connect to '$ampi' in Multiplayer. The version is 1.19!" buttons {"OK"} with icon stop'
+    osascript -e 'tell application (path to frontmost application as text) to display dialog "Hey! This computer hosts a Minecraft server! Connect to '$ampi' in Multiplayer. The version is 1.20.1!" buttons {"OK"} with icon stop'
 fi

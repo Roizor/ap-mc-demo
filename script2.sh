@@ -11,5 +11,5 @@ if [[ -d "$APMC_SHOME" ]]; then # A server exists!
     cd $APMC_SHOME
     screen -dmS mcs $APMC_JHOME/java -jar server.jar
 		ampi=$(ipconfig getifaddr en0)
-		osascript -e 'tell application (path to frontmost application as text) to display dialog "Hey! This computer hosts a Minecraft server! Connect to '$ampi' in Multiplayer. The version is 1.19!" buttons {"OK"} with icon stop'
+		osascript -e 'tell application (path to frontmost application as text) to display dialog "Hey! This computer hosts a Minecraft server! Connect to '$ampi' in Multiplayer. The version is 1.20.1!" buttons {"OK"} with icon stop'
 fi

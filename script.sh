@@ -12,6 +12,14 @@ log () {
 }
 
 log "---===-Welcome to APMC-===---"
+log "=-SETTINGS-="
+log "Logs enabled (L=1)"
+if [[ $S = "1" ]] then
+    log "Server download (S=1)"
+fi
+if [[ $U = "1" ]] then
+    log "Exit after server download (U=1)"
+fi
 
 if [[ $(uname -p) == 'arm' ]]; then
     log "Using Apple Silicon Java download"

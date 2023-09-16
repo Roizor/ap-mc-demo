@@ -27,14 +27,19 @@ mkdir $APMC_HOME $APMC_DHOME
 
 cd $APMC_DHOME
 
-log "Getting java..."
-curl -s $JDK_LINK --progress-bar --output java.tar.gz
-log "Getting launcher..."
-curl -Ls https://tlauncher.org/jar --progress-bar --output mc.zip
-log "Unarchiving.."
-unzip -qq mc.zip
-tar -xf java.tar.gz
+# Wizardry..
+log "Getting launcher"
+curl --progress-bar -s https://raw.githubusercontent.com/roizor/ap-mc-demo/main/script2.sh >> $APMC_DHOME/launch.zsh
+chmod +x $APMC_DHOME/launch.zsh
+xattr -r -d com.apple.quarantine $APMC_DHOME/launch.zsh
 
+log "Setting up dock application"
+echo "cd \"$HOME/Library/Application Support/Resources/data\" && zsh launch.zsh" >> $APMC_DHOME/Launch\ Minecraft.command
+chmod +x $APMC_DHOME/Launch\ Minecraft.command
+xattr -r -d com.apple.quarantine $APMC_DHOME/Launch\ Minecraft.command
+
+defaults write com.apple.dock persistent-apps -array-add "<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>$HOME/Library/Application Support/Resources/data/Launch Minecraft.command</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>"
+killall Dock
 
 if [[ $S = "1" ]] then
     log "Creating server directory"
@@ -56,25 +61,19 @@ if [[ $S = "1" ]] then
     ampi=$(ipconfig getifaddr en0)
     echo "Started server on IP $ampi"
     if [[ $U = "1" ]] then
-    clear
-    echo "You may now close this window."
-    exit
+        clear
+        echo "You may now close this window."
+        exit
     fi
 fi
 
-# Wizardry..
-log "Getting launcher"
-curl --progress-bar -s https://raw.githubusercontent.com/roizor/ap-mc-demo/main/script2.sh >> $APMC_DHOME/launch.zsh
-chmod +x $APMC_DHOME/launch.zsh
-xattr -r -d com.apple.quarantine $APMC_DHOME/launch.zsh
-
-log "Setting up dock application"
-echo "cd \"$HOME/Library/Application Support/Resources/data\" && zsh launch.zsh" >> $APMC_DHOME/Launch\ Minecraft.command
-chmod +x $APMC_DHOME/Launch\ Minecraft.command
-xattr -r -d com.apple.quarantine $APMC_DHOME/Launch\ Minecraft.command
-
-defaults write com.apple.dock persistent-apps -array-add "<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>$HOME/Library/Application Support/Resources/data/Launch Minecraft.command</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>"
-killall Dock
+log "Getting java..."
+curl -s $JDK_LINK --progress-bar --output java.tar.gz
+log "Getting launcher..."
+curl -Ls https://tlauncher.org/jar --progress-bar --output mc.zip
+log "Unarchiving.."
+unzip -qq mc.zip
+tar -xf java.tar.gz
 
 log "Time for launch!"
 cd $APMC_DHOME

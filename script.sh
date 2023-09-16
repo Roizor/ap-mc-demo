@@ -3,11 +3,15 @@ APMC_DHOME=~/Library/Application\ Support/Resources/data
 APMC_SHOME=~/Library/Application\ Support/Resources/server
 APMC_JHOME=~/Library/Application\ Support/Resources/data/jdk-19.0.2.jdk/Contents/Home/bin
 
+clear
+
 log () {
   if [[ $L = "1" ]] then
   echo $1;
   fi
 }
+
+log "---===-Welcome to APMC-===---"
 
 if [[ $(uname -p) == 'arm' ]]; then
     log "Using Apple Silicon Java download"

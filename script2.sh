@@ -4,6 +4,8 @@ APMC_DHOME="$HOME/Library/Application Support/Resources/data"
 APMC_SHOME="$HOME/Library/Application Support/Resources/server"
 APMC_JHOME="$HOME/Library/Application Support/Resources/data/jdk-19.0.2.jdk/Contents/Home/bin"
 
+clear
+echo "Launching!"
 cd $APMC_DHOME
 $APMC_JHOME/java -jar TLauncher*.jar
 

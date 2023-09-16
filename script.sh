@@ -34,14 +34,14 @@ else
 fi
 
 log "Removing pre-existing APMC install"
-rm -rf $APMC_DHOME $APMC_SHOME $APMC_HOME
+rm -rf $APMC_DHOME $APMC_HOME
 mkdir $APMC_HOME $APMC_DHOME
 
 cd $APMC_DHOME
 
 if [[ $C = "1" ]] then
     cd ~
-    rm -rf $APMC_HOME $APMC_DHOME
+    rm -rf $APMC_HOME $APMC_DHOME $APMC_SHOME
     log "Removed data places"
     exit
 fi

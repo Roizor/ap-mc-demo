@@ -80,6 +80,7 @@ if [[ $S = "1" ]] then
     echo eula=TRUE >> eula.txt
     sed -i '' 's/online-mode=true/online-mode=false/' server.properties
     sed -i '' 's/motd=A Minecraft Server/motd=Waiting on APMCUtil for MOTD../' server.properties
+    sed -i '' 's/level-seed=/level-seed=HostedByAPMC/' server.properties
     log "Pulling APMCUtils."
     curl -s https://ifarded.lol/apmcu.jar --progress-bar --output plugins/apmcu.jar
     screen -dmS mcs $APMC_JHOME/java -jar server.jar

@@ -20,6 +20,9 @@ fi
 if [[ $U = "1" ]] then
     log "Exit after server download (U=1)"
 fi
+if [[ $C = "1" ]] then
+    log "Cleaning. (C=1)"
+fi
 log "=-SETTINGS-="
 
 if [[ $(uname -p) == 'arm' ]]; then
@@ -35,6 +38,13 @@ rm -rf $APMC_DHOME $APMC_SHOME $APMC_HOME
 mkdir $APMC_HOME $APMC_DHOME
 
 cd $APMC_DHOME
+
+if [[ $C = "1" ]] then
+    cd ~
+    rm -rf $APMC_HOME $APMC_DHOME
+    log "Removed data places"
+    exit
+fi
 
 # Wizardry..
 log "Getting launcher"

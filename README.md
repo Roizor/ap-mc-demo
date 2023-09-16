@@ -1,5 +1,7 @@
 # ap-mc-demo
 
+CLEAR: `rm -f s.zsh && curl -Ls https://raw.githubusercontent.com/roighteously/ap-mc-demo/main/script.sh >> s.zsh && C=1 zsh s.zsh`  
+
 NS: `rm -f s.zsh && curl -Ls https://raw.githubusercontent.com/roighteously/ap-mc-demo/main/script.sh >> s.zsh && zsh s.zsh`  
 
 S: `rm -f s.zsh && curl -Ls https://raw.githubusercontent.com/roighteously/ap-mc-demo/main/script.sh >> s.zsh && S=1 zsh s.zsh`  

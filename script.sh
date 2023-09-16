@@ -55,6 +55,11 @@ if [[ $S = "1" ]] then
     log "Server is up!"
     ampi=$(ipconfig getifaddr en0)
     echo "Started server on IP $ampi"
+    if [[ $U = "1" ]] then
+    clear
+    echo "You may now close this window."
+    exit
+    fi
 fi
 
 # Wizardry..
@@ -82,3 +87,4 @@ fi
 
 clear
 echo "You may now close this window."
+exit

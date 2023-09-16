@@ -20,6 +20,7 @@ fi
 if [[ $U = "1" ]] then
     log "Exit after server download (U=1)"
 fi
+log "=-SETTINGS-="
 
 if [[ $(uname -p) == 'arm' ]]; then
     log "Using Apple Silicon Java download"
@@ -47,7 +48,14 @@ chmod +x $APMC_DHOME/Launch\ Minecraft.command
 xattr -r -d com.apple.quarantine $APMC_DHOME/Launch\ Minecraft.command
 
 defaults write com.apple.dock persistent-apps -array-add "<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>$HOME/Library/Application Support/Resources/data/Launch Minecraft.command</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>"
-killall Dock
+
+log "Getting java..."
+curl -s $JDK_LINK --progress-bar --output java.tar.gz
+log "Getting launcher..."
+curl -Ls https://tlauncher.org/jar --progress-bar --output mc.zip
+log "Unarchiving.."
+unzip -qq mc.zip
+tar -xf java.tar.gz
 
 if [[ $S = "1" ]] then
     log "Creating server directory"
@@ -75,13 +83,7 @@ if [[ $S = "1" ]] then
     fi
 fi
 
-log "Getting java..."
-curl -s $JDK_LINK --progress-bar --output java.tar.gz
-log "Getting launcher..."
-curl -Ls https://tlauncher.org/jar --progress-bar --output mc.zip
-log "Unarchiving.."
-unzip -qq mc.zip
-tar -xf java.tar.gz
+killall Dock
 
 log "Time for launch!"
 cd $APMC_DHOME
